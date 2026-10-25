@@ -1,20 +1,3 @@
+This project demonstrates a teacher–student knowledge distillation data-generation pipeline using GPT-OSS-120B on AWS Graviton (ARM64). It uses llama.cpp for CPU-based batch inference on sample FAQs, generating structured question–answer datasets in JSONL format. The pipeline supports resumable inference, response validation, and dataset storage in Amazon S3 for subsequent fine-tuning of a smaller GPT-OSS-20B student model. 
 
-cd ~/gpt-oss-120b-faq
-
-git remote -v
-
-git pull --ff-only teacher main
-
-ls -lh ~/gpt-oss-teacher-faq/models/gpt-oss-120b-MXFP4.gguf
-
-curl http://127.0.0.1:8080/health or 
-
-tmux new -s teacher
-
-~/llama.cpp/build/bin/llama-server --model ~/gpt-oss-teacher-faq/models/gpt-oss-120b-MXFP4.gguf --alias gpt-oss-120b --host 127.0.0.1 --port 8080 --ctx-size 4096 --threads 16 --parallel 1 --n-gpu-layers 0 --jinja
-
-(Detach from tmux using Ctrl+B, then D)
-
-python3 -u scripts/generate_batch.py
-
-wc -l output/teacher_output.jsonl
+This repository covers the teacher inference and dataset preparation stages only.
