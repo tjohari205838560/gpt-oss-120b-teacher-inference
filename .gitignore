@@ -1,0 +1,31 @@
+# Model weights
+models/
+*.gguf
+*.safetensors
+*.bin
+
+#Python environment
+.venv/
+__pycache__/
+*.pyc
+
+#Build files
+build/
+CMakeFiles/
+
+#Logs
+*.Logs
+nohup.out
+
+#Credentials
+.env
+.env.*
+*.pem
+*.key
+.aws/
+.ssh/
+
+#Temporary files
+.DS_Store
+*.tmp 
+EOF
